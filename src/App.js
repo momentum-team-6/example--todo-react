@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { useState } from 'react'
 
-function App() {
+function App () {
+  const [todos, setTodos] = useState([
+    'Take out the papers',
+    'And the trash',
+    'Pick up some spending cash'
+  ])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1>Todos ({todos.length})</h1>
+      <List items={todos} />
+      <div>
+        <button onClick={() => {
+          setTodos(todos.concat(['New task']))
+        }}
+        >Add a new task
+        </button>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+function List ({ items }) {
+  return (
+    <ul>
+      {items.map(function (item, idx) {
+        return <li key={idx}>{item}</li>
+      })}
+    </ul>
+  )
+}
+
+export default App
