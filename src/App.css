@@ -3,3 +3,8 @@
   margin: 0 auto;
   max-width: 40rem;
 }
+
+.todo-item-done {
+  color: #777777;
+  text-decoration: line-through;
+}
